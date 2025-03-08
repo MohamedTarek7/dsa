@@ -1,11 +1,11 @@
 package linear;
 
-import linear.problem_solving.SecondMax;
+import linear.problem_solving.PrintArray;
 
 public class ArrayDS {
 
     public static void main(String[] args) {
-        int[] nums = { 8, 1, 2, 3, 2, 1, 7 };
-        System.out.println(SecondMax.secondMax(nums));
+        int[] nums = { 0, 1, 0, 4, 12 };
+        PrintArray.printArray(MoveZero.moveZero(nums));
     }
 }
