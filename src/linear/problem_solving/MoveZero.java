@@ -1,4 +1,4 @@
-package linear;
+package linear.problem_solving;
 
 public class MoveZero {
 
