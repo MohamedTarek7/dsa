@@ -15,9 +15,7 @@ public class PalindromeString {
         int j = length - 1;
 
         for (int i = 0; i < length / 2; i++) {
-            if (condition) {
-                
-            }
+            
             if (s.charAt(i) != s.charAt(j)) {
                 return false;
             }
