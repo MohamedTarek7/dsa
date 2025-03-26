@@ -63,12 +63,65 @@ public class SinglyLinkedList {
         return counter;
     }
 
-    public void print(SinglyLinkedList sll) {
-        ListNode current = sll.head;
+    public void print() {
+        ListNode current = head;
         while (current != null) {
             System.out.print(current.data + " ");
             current = current.next;
         }
         System.out.println();
     }
+
+    public void deleteHead() {
+        if (head == null) {
+            return;
+        }
+        ListNode temp = head;
+        head = head.next;
+        temp.next = null;
+    }
+
+    public void deleteTail() {
+        ListNode current = head;
+        while (current != null) {
+            if (current.next != null) {
+                if (current.next.next == null) {
+                    current.next = null;
+                    break;
+                }
+            }
+            current = current.next;
+        }
+    }
+
+    public void deleteAt(int idx) {
+        if (idx > size(head) || idx < 0) {
+            throw new IndexOutOfBoundsException("This index doesn't exist");
+        }
+
+        if (idx == 0) {
+            deleteHead();
+            return;
+        }
+
+        if (idx == size(head) - 1) {
+            deleteTail();
+            return;
+        }
+
+        ListNode current = head;
+        int i = 0;
+        while (i < idx - 1) {
+            current = current.next;
+            i++;
+        }
+        ListNode temp = current.next;
+        current.next = temp.next;
+        temp.next = null;
+    }
+
+    // public boolean contains(ListNode<T> data) {
+        
+    // }
+
 }

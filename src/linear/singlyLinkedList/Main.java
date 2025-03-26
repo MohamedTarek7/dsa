@@ -21,8 +21,11 @@ public class Main {
         sll.insertLast(node5);
         sll.insertAt(node0, 2);
 
+        sll.deleteHead();
+        sll.deleteTail();
+        sll.deleteAt(1);
         System.out.println("Size: " + sll.size(sll));
-        sll.print(sll);
+        sll.print();
 
     }
 }
