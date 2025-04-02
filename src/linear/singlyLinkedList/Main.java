@@ -24,6 +24,9 @@ public class Main {
         sll.deleteHead();
         sll.deleteTail();
         sll.deleteAt(1);
+
+        System.out.println(sll.contains(2));
+
         System.out.println("Size: " + sll.size(sll));
         sll.print();
 

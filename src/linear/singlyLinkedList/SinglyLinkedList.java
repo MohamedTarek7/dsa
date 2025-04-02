@@ -120,8 +120,24 @@ public class SinglyLinkedList {
         temp.next = null;
     }
 
-    // public boolean contains(ListNode<T> data) {
-        
-    // }
+    public <T> boolean contains(T searchKey) {
+        ListNode current = head;
+        while (current != null) {
+            if (searchKey.equals(current.data)) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    public void replace(int idx1, int idx2) {
+        ListNode current = head;
+        ListNode temp ;
+        int i = 0;
+        while (i < idx2) {
+            current = current.next;
+        }
+    }
 
 }
