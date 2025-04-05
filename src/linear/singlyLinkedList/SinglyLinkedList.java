@@ -23,8 +23,8 @@ public class SinglyLinkedList {
         current.next = node;
     }
 
-    public void insertAt(ListNode node, int idx) {
-        if (idx > size(head) || idx < 0) {
+    public void insertNodeAtIndex(ListNode node, int idx) {
+        if (idx > size() || idx < 0) {
             throw new IndexOutOfBoundsException("This index doesn't exist");
         }
         
@@ -43,19 +43,10 @@ public class SinglyLinkedList {
         current.next = node;
     }
 
-    public int size(ListNode node) {
+    public int size() {
         int counter = 0;
         ListNode current = head;
-        while (current != null) {
-            counter++;
-            current = current.next;
-        }
-        return counter;
-    }
 
-    public int size(SinglyLinkedList sll) {
-        int counter = 0;
-        ListNode current = sll.head;
         while (current != null) {
             counter++;
             current = current.next;
@@ -94,8 +85,8 @@ public class SinglyLinkedList {
         }
     }
 
-    public void deleteAt(int idx) {
-        if (idx > size(head) || idx < 0) {
+    public void deleteNodeAtIndex(int idx) {
+        if (idx > size() || idx < 0) {
             throw new IndexOutOfBoundsException("This index doesn't exist");
         }
 
@@ -104,7 +95,7 @@ public class SinglyLinkedList {
             return;
         }
 
-        if (idx == size(head) - 1) {
+        if (idx == size() - 1) {
             deleteTail();
             return;
         }
@@ -131,13 +122,36 @@ public class SinglyLinkedList {
         return false;
     }
 
-    public void replace(int idx1, int idx2) {
-        ListNode current = head;
-        ListNode temp ;
-        int i = 0;
-        while (i < idx2) {
-            current = current.next;
+    public ListNode getListNodeAtIndex(int idx) {
+
+        if (idx > size() || idx < 0) {
+            throw new IndexOutOfBoundsException("This index doesn't exist");
         }
+
+        ListNode temp = head;
+        int i = 0;
+
+        while (i < idx) {
+            temp = temp.next;
+            i++;
+        }
+        return temp;
     }
 
+    public <T> void switchListNodes(ListNode n1, ListNode n2) {
+        T temp = (T) n1.data;
+        n1.data = n2.data;
+        n2.data = temp;
+    }
+
+    public void reverse() {
+        int length = size();
+        int i = 0;
+
+        while (i < (length / 2)) {
+            switchListNodes(getListNodeAtIndex(i), getListNodeAtIndex(length - 1));
+            length--;
+            i++;
+        }
+    }
 }

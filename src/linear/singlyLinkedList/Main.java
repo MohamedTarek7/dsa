@@ -18,16 +18,10 @@ public class Main {
         ListNode<Integer> node0 = new ListNode<>(0);
         ListNode<Integer> node5 = new ListNode<>(5);
 
-        sll.insertLast(node5);
-        sll.insertAt(node0, 2);
 
-        sll.deleteHead();
-        sll.deleteTail();
-        sll.deleteAt(1);
+        sll.reverse();
 
-        System.out.println(sll.contains(2));
-
-        System.out.println("Size: " + sll.size(sll));
+        System.out.println("Size: " + sll.size());
         sll.print();
 
     }
