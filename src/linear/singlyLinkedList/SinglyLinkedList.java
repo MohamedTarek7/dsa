@@ -1,8 +1,10 @@
 package linear.singlyLinkedList;
 
+import java.util.List;
+
 @SuppressWarnings("unchecked")
 public class SinglyLinkedList {
-    
+
     protected ListNode head;
 
     public void insertFirst(ListNode node) {
@@ -15,7 +17,7 @@ public class SinglyLinkedList {
             head = node;
             return;
         }
-        
+
         ListNode current = head;
         while (current.next != null) {
             current = current.next;
@@ -27,7 +29,7 @@ public class SinglyLinkedList {
         if (idx > size() || idx < 0) {
             throw new IndexOutOfBoundsException("This index doesn't exist");
         }
-        
+
         if (idx == 0) {
             insertFirst(node);
             return;
@@ -153,5 +155,19 @@ public class SinglyLinkedList {
             length--;
             i++;
         }
+    }
+
+    public void reverseSLL() {
+        // ListNode current = head;
+        ListNode previous = null;
+        ListNode next = null;
+
+        while (head != null) {
+            next = head.next;
+            head.next = previous;
+            previous = head;
+            head = next;
+        }
+        head = previous;
     }
 }

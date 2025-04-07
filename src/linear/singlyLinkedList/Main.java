@@ -19,7 +19,11 @@ public class Main {
         ListNode<Integer> node5 = new ListNode<>(5);
 
 
-        sll.reverse();
+        System.out.println("Size: " + sll.size());
+        sll.print();
+
+        // sll.reverse();
+        sll.reverseSLL();
 
         System.out.println("Size: " + sll.size());
         sll.print();
