@@ -22,7 +22,6 @@ public class Main {
         System.out.println("Size: " + sll.size());
         sll.print();
 
-        // sll.reverse();
         sll.reverseSLL();
 
         System.out.println("Size: " + sll.size());
