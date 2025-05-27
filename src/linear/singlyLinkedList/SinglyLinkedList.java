@@ -170,6 +170,22 @@ public class SinglyLinkedList {
         }
         head = previous;
     }
+
+    public ListNode findMiddle() {
+
+        if (size() == 1) {
+            return head;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
 }
 
-// Hello from Mac OS 
+// Hello from Mac OS

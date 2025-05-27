@@ -15,16 +15,13 @@ public class Main {
         ListNode<Integer> node4 = new ListNode<>(4);
         node3.next = node4;
 
-        ListNode<Integer> node0 = new ListNode<>(0);
         ListNode<Integer> node5 = new ListNode<>(5);
+        node4.next = node5;
 
+        ListNode<Integer> node6 = new ListNode<>(6);
+        node5.next = node6;
 
-        System.out.println("Size: " + sll.size());
-        sll.print();
-
-        sll.reverseSLL();
-
-        System.out.println("Size: " + sll.size());
+        System.out.println("Middle of the list is: " + sll.findMiddle().data);
         sll.print();
 
     }
