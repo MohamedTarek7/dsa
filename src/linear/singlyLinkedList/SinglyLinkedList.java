@@ -7,14 +7,15 @@ public class SinglyLinkedList {
 
     protected ListNode head;
 
-    public void insertFirst(ListNode node) {
+    public <T> void insertFirst(T value) {
+        ListNode node = new ListNode<T>(value);
         node.next = head;
         head = node;
     }
 
-    public void insertLast(ListNode node) {
+    public <T> void insertLast(T value) {
         if (head == null) {
-            head = node;
+            head = new ListNode<T>(value);
             return;
         }
 
@@ -22,16 +23,16 @@ public class SinglyLinkedList {
         while (current.next != null) {
             current = current.next;
         }
-        current.next = node;
+        current.next = new ListNode<T>(value);
     }
 
-    public void insertNodeAtIndex(ListNode node, int idx) {
+    public <T> void insertNodeAtIndex(T value, int idx) {
         if (idx > size() || idx < 0) {
             throw new IndexOutOfBoundsException("This index doesn't exist");
         }
 
         if (idx == 0) {
-            insertFirst(node);
+            insertFirst(new ListNode<T>(value));
             return;
         }
 
@@ -41,6 +42,7 @@ public class SinglyLinkedList {
             current = current.next;
             i++;
         }
+        ListNode node = new ListNode<T>(value);
         node.next = current.next;
         current.next = node;
     }
@@ -171,21 +173,23 @@ public class SinglyLinkedList {
         head = previous;
     }
 
-    public ListNode findMiddle() {
+    public ListNode getMiddleNode() {
 
-        if (size() == 1) {
-            return head;
+        if (head == null) {
+            return null;
         }
 
-        ListNode slow = head;
-        ListNode fast = head;
+        ListNode slow_ptr = head;
+        ListNode fast_ptr = head;
 
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        while (fast_ptr != null && fast_ptr.next != null) {
+            slow_ptr = slow_ptr.next;
+            fast_ptr = fast_ptr.next.next;
         }
-        return slow;
+        return slow_ptr;
     }
+
+    // Your code here
 }
 
 // Hello from Mac OS

@@ -1,28 +1,22 @@
 package linear.singlyLinkedList;
 
 public class Main {
-    @SuppressWarnings("unchecked")
+    // @SuppressWarnings("unchecked")
     public static void main(String[] args) {
+
+        // initialization of the Linked List
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = new ListNode<>(1);
 
-        ListNode<Integer> node2 = new ListNode<>(2);
-        sll.head.next = node2;
+        // Decleration of the Linked List
+        for (int i = 1; i < 10; i++) {
+            sll.insertLast(i);
+        }
 
-        ListNode<Integer> node3 = new ListNode<>(3);
-        node2.next = node3;
-
-        ListNode<Integer> node4 = new ListNode<>(4);
-        node3.next = node4;
-
-        ListNode<Integer> node5 = new ListNode<>(5);
-        node4.next = node5;
-
-        ListNode<Integer> node6 = new ListNode<>(6);
-        node5.next = node6;
-
-        System.out.println("Middle of the list is: " + sll.findMiddle().data);
+        // Display the content of the Linked List
+        System.out.print("List items: ");
         sll.print();
+
+        System.out.println("Middle of the list is: " + sll.getMiddleNode().data);
 
     }
 }
