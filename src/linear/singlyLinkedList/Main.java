@@ -16,7 +16,7 @@ public class Main {
         System.out.print("List items: ");
         sll.print();
 
-        System.out.println("Middle of the list is: " + sll.getMiddleNode().data);
+        System.out.println("The nth node from end of the lis is: " + sll.getNthNodeFromEnd(3).data);
 
     }
 }

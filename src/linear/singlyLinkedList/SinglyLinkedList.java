@@ -189,7 +189,39 @@ public class SinglyLinkedList {
         return slow_ptr;
     }
 
-    // Your code here
+    public ListNode getNthNodeFromEnd(int n) {
+
+        if (head == null) {
+            return null;
+        }
+
+        if (n <= 0 || n > size()) {
+            throw new IllegalArgumentException("Invalid value: n = " + n + ", n should be a value in the range of 1 to " + size());
+        }
+
+        ListNode main_ptr = head;
+        ListNode ref_ptr = head;
+
+        int counter = 0;
+
+        while (counter < n) {
+            ref_ptr = ref_ptr.next;
+            counter++;
+        }
+
+        while (ref_ptr != null) {
+            ref_ptr = ref_ptr.next;
+            main_ptr = main_ptr.next;
+        }
+
+        return main_ptr;
+    }
+
+    // Remove duplicate from a sorted linked list
+    
+    /*
+     * your code here
+     */
 }
 
 // Hello from Mac OS
