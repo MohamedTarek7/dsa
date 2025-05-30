@@ -2,6 +2,8 @@ package linear.singlyLinkedList;
 
 import java.util.List;
 
+import javax.swing.text.html.StyleSheet.ListPainter;
+
 @SuppressWarnings("unchecked")
 public class SinglyLinkedList {
 
@@ -196,7 +198,8 @@ public class SinglyLinkedList {
         }
 
         if (n <= 0 || n > size()) {
-            throw new IllegalArgumentException("Invalid value: n = " + n + ", n should be a value in the range of 1 to " + size());
+            throw new IllegalArgumentException(
+                    "Invalid value: n = " + n + ", n should be a value in the range of 1 to " + size());
         }
 
         ListNode main_ptr = head;
@@ -217,11 +220,44 @@ public class SinglyLinkedList {
         return main_ptr;
     }
 
-    // Remove duplicate from a sorted linked list
-    
-    /*
-     * your code here
-     */
+    // Remove duplicates from a sorted linked list
+    public void removeDuplicatesSorted() {
+        if (head == null) {
+            return;
+        }
+
+        ListNode current = head;
+
+        while (current != null && current.next != null) {
+            if (current.data == current.next.data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
+    // Remove duplicates from an usorted linked list
+    public void removeDuplicatesUnsorted() {
+        if (head == null) {
+            return;
+        }
+
+        ListNode current = head;
+
+        while (current != null) {
+            ListNode runner = current;
+            while (runner.next != null) {
+                if (current.data.equals(runner.next.data)) {
+                    runner.next = runner.next.next; // remove the duplicate node
+                } else {
+                    runner = runner.next; // move to the next node
+                }
+            }
+            current = current.next; // move to the next node
+        }
+    }
+
 }
 
 // Hello from Mac OS
