@@ -14,19 +14,17 @@ public class Main {
 
         // Display the content of the Linked List
         
-        sll.insertLast(3);
         sll.insertLast(1);
-        sll.insertLast(7);
-        sll.insertLast(2);
-        sll.insertLast(3);
-        sll.insertLast(2);
+        sll.insertLast(8);
+        sll.insertLast(10);
+        sll.insertLast(16);
         System.out.print("List items: ");
         sll.print();
-        sll.removeDuplicatesUnsorted();
+        sll.insertSorted(11);
         System.out.print("List items: ");
         sll.print();
 
         // System.out.println("The nth node from end of the lis is: " + sll.getNthNodeFromEnd(3).data);
-
+ 
     }
 }

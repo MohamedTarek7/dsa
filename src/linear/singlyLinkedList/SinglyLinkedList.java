@@ -258,6 +258,28 @@ public class SinglyLinkedList {
         }
     }
 
+    public <T> void insertSorted(T value) {
+        if (head == null) {
+            head = new ListNode<T>(value);
+            return;
+        }
+
+        ListNode current = head;
+        ListNode temp = null;
+        ListNode new_node = new ListNode<T>(value);
+
+        int current_data = (int) current.data;
+        int new_node_data = (int) new_node.data;
+
+        while (current != null && new_node_data >= current_data) {
+            temp = current;
+            current = current.next;
+            current_data = (int) current.data;
+        }
+        new_node.next = current;
+        temp.next = new_node;
+    }
+
 }
 
 // Hello from Mac OS
