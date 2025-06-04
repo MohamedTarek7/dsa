@@ -268,13 +268,15 @@ public class SinglyLinkedList {
         ListNode temp = null;
         ListNode new_node = new ListNode<T>(value);
 
+        // these two variables are holding the integer values,
+        // because comparisone betten an object & a premitive can't be done.
         int current_data = (int) current.data;
         int new_node_data = (int) new_node.data;
 
         while (current != null && new_node_data >= current_data) {
             temp = current;
             current = current.next;
-            current_data = (int) current.data;
+            current_data = (int) current.data; // update the value of current.data in the holder variable
         }
         new_node.next = current;
         temp.next = new_node;
