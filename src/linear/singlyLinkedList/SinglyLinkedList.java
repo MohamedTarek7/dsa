@@ -282,6 +282,32 @@ public class SinglyLinkedList {
         temp.next = new_node;
     }
 
+    public void removeNodeByKey(int key) {
+
+        if (head == null) {
+            throw new NullPointerException("The List is empty!");
+        }
+
+        ListNode current = head;
+        
+        if (head.data.equals(key)) {
+            head = head.next;
+            current.next = null;
+            return;
+        }
+
+        ListNode temp = null;
+
+        while (current != null) {
+            if (current.data.equals(key)) {
+                temp.next = current.next;
+                current.next = null;
+                return;
+            }
+            temp = current;
+            current = current.next;
+        }
+    }
 }
 
 // Hello from Mac OS
