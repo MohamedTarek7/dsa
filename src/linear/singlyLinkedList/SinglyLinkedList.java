@@ -1,9 +1,5 @@
 package linear.singlyLinkedList;
 
-import java.util.List;
-
-import javax.swing.text.html.StyleSheet.ListPainter;
-
 @SuppressWarnings("unchecked")
 public class SinglyLinkedList {
 
@@ -289,7 +285,7 @@ public class SinglyLinkedList {
         }
 
         ListNode current = head;
-        
+
         if (head.data.equals(key)) {
             head = head.next;
             current.next = null;
@@ -307,6 +303,75 @@ public class SinglyLinkedList {
             temp = current;
             current = current.next;
         }
+    }
+
+    public boolean containsLoop() {
+        ListNode fast_ptr = head;
+        ListNode slow_ptr = head;
+
+        while (fast_ptr != null && fast_ptr.next != null) {
+            fast_ptr = fast_ptr.next.next;
+            slow_ptr = slow_ptr.next;
+
+            if (fast_ptr == null) {
+                return false;
+            }
+            if (fast_ptr.equals(slow_ptr)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ListNode findStartOfLoop() {
+        ListNode fast_ptr = head;
+        ListNode slow_ptr = head;
+
+        while (fast_ptr != null && fast_ptr.next != null) {
+            fast_ptr = fast_ptr.next.next;
+            slow_ptr = slow_ptr.next;
+
+            if (fast_ptr.equals(slow_ptr)) {
+                return slow_ptr;
+            }
+        }
+        return null;
+    }
+
+    public void removeLoop() {
+        ListNode start_of_loop = findStartOfLoop();
+        ListNode temp = head;
+        
+        while (!temp.next.equals(start_of_loop.next)) {
+            temp = temp.next;
+            start_of_loop = start_of_loop.next;
+        }
+
+        start_of_loop.next = null;
+    }
+
+    public void createALoopInLinkedList() {
+        ListNode first = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode fourth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(6);
+        ListNode seventh = new ListNode(7);
+        ListNode eighth = new ListNode(8);
+        ListNode ninth = new ListNode(9);
+
+        head = first;
+
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+        sixth.next = seventh;
+        seventh.next = eighth;
+        eighth.next = ninth;
+        ninth.next = sixth; // Creates a loop by pointing sixth node to third
     }
 }
 

@@ -9,21 +9,14 @@ public class Main {
 
         // initialization of the Linked List
         SinglyLinkedList sll = new SinglyLinkedList();
-        
-        sll.insertLast(1);
-        sll.insertLast(8);
-        sll.insertLast(10);
-        sll.insertLast(16);
-        
-        // Display the content of the Linked List
-        System.out.print("List items before: ");
-        sll.print();
-        
-        // Code here
+        sll.createALoopInLinkedList();
 
-        // Display the content of the Linked List
-        System.out.print("List items after: ");
-        sll.print();
+        System.out.println(sll.findStartOfLoop().data);
 
+        System.out.println(sll.containsLoop());
+        sll.removeLoop();
+        
+        System.out.println(sll.containsLoop());
+        sll.print();
     }
 }
