@@ -373,6 +373,38 @@ public class SinglyLinkedList {
         eighth.next = ninth;
         ninth.next = sixth; // Creates a loop by pointing sixth node to third
     }
+
+    public static SinglyLinkedList mergeSorted(SinglyLinkedList l1, SinglyLinkedList l2) {
+        SinglyLinkedList result = new SinglyLinkedList();
+        ListNode current = result.head;
+        ListNode ptr1 = l1.head;
+        ListNode ptr2 = l2.head;
+
+        System.out.println("result.head = " + result.head);
+
+        while (ptr1.next != null && ptr2.next != null) {
+
+            if ((int) (ptr1.data) > (int) (ptr2.data)) {
+                current.next = ptr2;
+                current = current.next;
+                ptr2 = ptr2.next;
+            }
+
+            if ((int) (ptr1.data) < (int) (ptr2.data)) {
+                current.next = ptr1;
+                current = current.next;
+                ptr1 = ptr1.next;
+            }
+
+            if (ptr1.data.equals(ptr2.data)) {
+                current.next = ptr1;
+                current = current.next;
+                ptr1 = ptr1.next;
+            }
+        }
+
+        return result;
+    } 
 }
 
 // Hello from Mac OS
