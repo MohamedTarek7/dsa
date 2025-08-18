@@ -19,12 +19,12 @@ public class Main {
         sll_2.insertLast(6);
         // sll_2.print();
 
-        SinglyLinkedList sll_3 = new SinglyLinkedList();
-        sll_3.head = new ListNode<>(0);
-        System.out.println(sll_3.head.data);
+        // SinglyLinkedList sll_3 = new SinglyLinkedList();
+        // sll_3.head = new ListNode<>(1);
+        // System.out.println(sll_3.head.data);
 
         // Merging two linked lists
-        // SinglyLinkedList mergedList = SinglyLinkedList.mergeSorted(sll_1, sll_2);
-        // mergedList.print();
+        SinglyLinkedList mergedList = SinglyLinkedList.mergeSorted(sll_1, sll_2);
+        mergedList.print();
     }
 }

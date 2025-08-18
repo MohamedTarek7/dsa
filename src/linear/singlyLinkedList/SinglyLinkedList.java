@@ -376,6 +376,7 @@ public class SinglyLinkedList {
 
     public static SinglyLinkedList mergeSorted(SinglyLinkedList l1, SinglyLinkedList l2) {
         SinglyLinkedList result = new SinglyLinkedList();
+        result.head = new ListNode<>(0); // Dummy node to simplify the merge process
         ListNode current = result.head;
         ListNode ptr1 = l1.head;
         ListNode ptr2 = l2.head;
