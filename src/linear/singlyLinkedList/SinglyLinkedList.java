@@ -1,5 +1,7 @@
 package linear.singlyLinkedList;
 
+import java.util.List;
+
 @SuppressWarnings("unchecked")
 public class SinglyLinkedList {
 
@@ -374,37 +376,30 @@ public class SinglyLinkedList {
         ninth.next = sixth; // Creates a loop by pointing sixth node to third
     }
 
-    public static SinglyLinkedList mergeSorted(SinglyLinkedList l1, SinglyLinkedList l2) {
-        SinglyLinkedList result = new SinglyLinkedList();
-        result.head = new ListNode<>(0); // Dummy node to simplify the merge process
-        ListNode current = result.head;
-        ListNode ptr1 = l1.head;
-        ListNode ptr2 = l2.head;
+    public static ListNode mergeSorted(ListNode a, ListNode b) {
+        
+        ListNode dummy = new ListNode(0); // dummy node
+        ListNode tail = dummy; // tail pointer to build the merged list
 
-        System.out.println("result.head = " + result.head);
+        while (a != null && b != null) {
 
-        while (ptr1.next != null && ptr2.next != null) {
-
-            if ((int) (ptr1.data) > (int) (ptr2.data)) {
-                current.next = ptr2;
-                current = current.next;
-                ptr2 = ptr2.next;
+            if ((int) (a.data) >= (int) (b.data)) {
+                tail.next = b;
+                b = b.next;
+            } else {
+                tail.next = a;
+                a = a.next;
             }
-
-            if ((int) (ptr1.data) < (int) (ptr2.data)) {
-                current.next = ptr1;
-                current = current.next;
-                ptr1 = ptr1.next;
-            }
-
-            if (ptr1.data.equals(ptr2.data)) {
-                current.next = ptr1;
-                current = current.next;
-                ptr1 = ptr1.next;
-            }
+            tail = tail.next;
         }
-
-        return result;
+        // append the remaining nodes of a or b
+        if (a == null) {
+            tail.next = b;
+        } else {
+            tail.next = a;
+        }
+        // return the merged list, which starts from dummy.next
+        return dummy.next;
     } 
 }
 

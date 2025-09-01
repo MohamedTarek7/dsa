@@ -24,7 +24,8 @@ public class Main {
         // System.out.println(sll_3.head.data);
 
         // Merging two linked lists
-        SinglyLinkedList mergedList = SinglyLinkedList.mergeSorted(sll_1, sll_2);
+        SinglyLinkedList mergedList = new SinglyLinkedList();
+        mergedList.head = SinglyLinkedList.mergeSorted(sll_1.head, sll_2.head);
         mergedList.print();
     }
 }
