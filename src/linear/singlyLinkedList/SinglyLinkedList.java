@@ -1,7 +1,5 @@
 package linear.singlyLinkedList;
 
-import java.util.List;
-
 @SuppressWarnings("unchecked")
 public class SinglyLinkedList {
 
@@ -343,7 +341,7 @@ public class SinglyLinkedList {
     public void removeLoop() {
         ListNode start_of_loop = findStartOfLoop();
         ListNode temp = head;
-        
+
         while (!temp.next.equals(start_of_loop.next)) {
             temp = temp.next;
             start_of_loop = start_of_loop.next;
@@ -377,7 +375,7 @@ public class SinglyLinkedList {
     }
 
     public static ListNode mergeSorted(ListNode a, ListNode b) {
-        
+
         ListNode dummy = new ListNode(0); // dummy node
         ListNode tail = dummy; // tail pointer to build the merged list
 
@@ -400,7 +398,27 @@ public class SinglyLinkedList {
         }
         // return the merged list, which starts from dummy.next
         return dummy.next;
-    } 
+    }
+
+    public static ListNode sumTwoLinkedLists(ListNode a, ListNode b) {
+        int remaining = 0;
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        while (a != null || b != null) {
+            // check for remaining of summition
+            if ((int) a.data + (int) b.data > 9) {
+                tail.data = ((int) a.data + (int) b.data) % 10 + remaining;
+                remaining = ((int) a.data + (int) b.data) / 10;
+            }
+            a = a.next;
+            b = b.next;
+            tail = tail.next;
+        }
+
+        return dummy.next;
+    }
+
 }
 
 // Hello from Mac OS
