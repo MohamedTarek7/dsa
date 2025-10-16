@@ -157,7 +157,7 @@ public class SinglyLinkedList {
         }
     }
 
-    public void reverseSLL() {
+    public static ListNode reverseSLL(ListNode head) {
         // ListNode current = head;
         ListNode previous = null;
         ListNode next = null;
@@ -169,6 +169,7 @@ public class SinglyLinkedList {
             head = next;
         }
         head = previous;
+        return head;
     }
 
     public ListNode getMiddleNode() {
@@ -401,24 +402,30 @@ public class SinglyLinkedList {
     }
 
     public static ListNode sumTwoLinkedLists(ListNode a, ListNode b) {
-        int remaining = 0;
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
+        int carry = 0;
 
         while (a != null || b != null) {
-            // check for remaining of summition
-            if ((int) a.data + (int) b.data > 9) {
-                tail.data = ((int) a.data + (int) b.data) % 10 + remaining;
-                remaining = ((int) a.data + (int) b.data) / 10;
-            }
-            a = a.next;
-            b = b.next;
+            int x = (a != null) ? (int) a.data : 0;
+            int y = (b != null) ? (int) b.data : 0;
+            int sum = carry + x + y;
+
+            carry = sum / 10;
+            tail.next = new ListNode(sum % 10);
             tail = tail.next;
+
+            if (a != null) {
+                a = a.next;
+            }
+            if (b != null) {
+                b = b.next;
+            }
         }
-
-        return dummy.next;
+        if (carry > 0) {
+            tail.next = new ListNode(carry);
+        }
+        return reverseSLL(dummy.next);
     }
-
 }
-
 // Hello from Mac OS
